@@ -1,4 +1,6 @@
+
 # react-native-appearance
+
 
 Polyfill for `Appearance` API to detect preferred color scheme (light/dark) in React Native 0.59, 0.60 and perhaps more (ymmv outside of these two!). The `Appearance` API will likely be available in `react-native@>=0.61`.
 
@@ -30,26 +32,98 @@ or npm:
 npm install react-native-appearance
 ```
 
-## Linking
+  
 
-After installing the package you need to link the native parts of the library for the platforms you are using. The easiest way to link the library is using the CLI tool by running this command from the root of your project:
+## Mostly automatic install with react-native  
 
-```sh
-react-native link react-native-appearance
+- **React Native 0.60+**
+
+
+[CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) links the module while building the app. 
+
+
+- **React Native <= 0.59**
+```bash
+$ react-native link @react-native-appearance
 ```
 
-If you can't or don't want to use the CLI tool, you can also manually link the library using the instructions below (click on the arrow to show them):
 
-<details>
-<summary>Manually link the library on iOS</summary>
+*Note* For `iOS` using `cocoapods`, run:
 
-Either follow the [instructions in the React Native documentation](https://facebook.github.io/react-native/docs/linking-libraries-ios#manual-linking) to manually link the framework or link using [Cocoapods](https://cocoapods.org) by adding this to your `Podfile`:
-
-```ruby
-pod 'react-native-appearance', :path => '../node_modules/react-native-appearance'
+```bash
+$ cd ios/ && pod install
 ```
 
-</details>
+### Manual installation
+
+
+#### iOS
+
+  
+
+1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
+
+2. Go to `node_modules` ➜ `react-native-appearance` and add `Appearance.xcodeproj`
+
+3. In XCode, in the project navigator, select your project. Add `libAppearance.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+
+4. Run your project (`Cmd+R`)<
+
+ 
+
+#### Android
+
+  
+
+1. Open up `android/app/src/main/java/[...]/MainApplication.java`
+
+- Add `import com.reactlibrary.AppearancePackage;` to the imports at the top of the file
+
+- Add `new AppearancePackage()` to the list returned by the `getPackages()` method
+
+2. Append the following lines to `android/settings.gradle`:
+
+```
+
+include ':react-native-appearance'
+
+project(':react-native-appearance').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-appearance/android')
+
+```
+
+3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
+
+```
+
+implementation project(':react-native-appearance')
+
+```
+
+  
+### Configuration (required)
+
+**Android**
+
+Implement `onConfigurationChanged` method in `MainActivity.java`
+
+```java
+    import android.content.Intent; // <--- import
+    import android.content.res.Configuration; // <--- import
+
+    public class MainActivity extends ReactActivity {
+      ......
+      @Override
+      public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Intent intent = new Intent("onAppearanceConfigurationChanged");
+        intent.putExtra("newConfig", newConfig);
+        sendBroadcast(intent);
+    }
+
+      ......
+
+    }
+```
 
 ## Usage
 
