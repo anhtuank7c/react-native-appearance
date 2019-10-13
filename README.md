@@ -44,7 +44,7 @@ npm install react-native-appearance
 
 - **React Native <= 0.59**
 ```bash
-$ react-native link @react-native-appearance
+$ react-native link react-native-appearance
 ```
 
 
@@ -112,16 +112,17 @@ Implement `onConfigurationChanged` method in `MainActivity.java`
 
     public class MainActivity extends ReactActivity {
       ......
+
+      // copy these lines
       @Override
       public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Intent intent = new Intent("onAppearanceConfigurationChanged");
         intent.putExtra("newConfig", newConfig);
         sendBroadcast(intent);
-    }
+      }
 
       ......
-
     }
 ```
 
