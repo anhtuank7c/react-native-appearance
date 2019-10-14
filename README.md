@@ -104,6 +104,15 @@ implementation project(':react-native-appearance')
 
 **Android**
 
+
+Implement `uiMode` in `AndroidManifest.xml`
+
+```xml
+    <activity
+    ...
+    android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode">
+```
+
 Implement `onConfigurationChanged` method in `MainActivity.java`
 
 ```java
@@ -117,7 +126,7 @@ Implement `onConfigurationChanged` method in `MainActivity.java`
       @Override
       public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Intent intent = new Intent("onAppearanceConfigurationChanged");
+        Intent intent = new Intent("onConfigurationChanged");
         intent.putExtra("newConfig", newConfig);
         sendBroadcast(intent);
       }

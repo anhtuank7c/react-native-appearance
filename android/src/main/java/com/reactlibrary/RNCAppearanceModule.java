@@ -109,7 +109,7 @@ public class RNCAppearanceModule extends ReactContextBaseJavaModule implements L
             FLog.e(ReactConstants.TAG, "no activity to register receiver");
             return;
         }
-        activity.registerReceiver(receiver, new IntentFilter("onAppearanceConfigurationChanged"));
+        activity.registerReceiver(receiver, new IntentFilter("onConfigurationChanged"));
     }
 
     @Override
