@@ -3,11 +3,13 @@
   "title": "React Native Appearance",
   "version": "1.0.0",
   "description": "TODO",
-  "main": "build/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --noEmit",
+    "lint": "eslint --ext .ts,.tsx src --fix",
+    "test": "yarn lint && yarn build"
   },
+  "types": "src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/github_account/react-native-appearance.git",
@@ -28,10 +30,18 @@
     "react-native": ">=0.59.0-rc.0 <1.0.x"
   },
   "devDependencies": {
+    "@react-native-community/eslint-config": "^0.0.5",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "prettier": "^1.18.2",
     "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "react-native": "^0.59.10",
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "use-subscription": "^1.1.1"
-  }
+  },
+  "nativePackage": true
 }

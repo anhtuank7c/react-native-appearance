@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { requireNativeComponent, NativeModules, NativeEventEmitter, DeviceEventEmitter, EventSubscription } from 'react-native'
+import { StyleSheet, requireNativeComponent, NativeModules, NativeEventEmitter, DeviceEventEmitter, EventSubscription } from 'react-native'
 import { useSubscription } from 'use-subscription'
 import { AppearancePreferences, ColorScheme, AppearanceListener } from './types'
 
@@ -10,8 +10,19 @@ const RNCAppearanceProvider = requireNativeComponent('RNCAppearanceProvider')
 EventListener.addListener('appearanceChanged', (preference: AppearancePreferences) => {
     Appearance.set(preference)
 })
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+})
+export const AppearanceProvider = ({ children }: { children: any }) => {
+    return (
+        <RNCAppearanceProvider style={styles.container}>
+            {children}
+        </RNCAppearanceProvider>
+    )
+}
 
-export const AppearanceProvider = (props: { children: any }) => <RNCAppearanceProvider style={{ flex: 1 }} {...props} />
 let appearancePreferences: AppearancePreferences = RNCAppearance.initialPreferences
 
 export class Appearance {
