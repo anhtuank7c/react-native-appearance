@@ -1,9 +1,7 @@
 {
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "example/**/*.ts",
-    "example/**/*.tsx"
+    "*.ts",
+    "*.tsx"
   ],
   "compilerOptions": {
     "esModuleInterop": true,
@@ -15,5 +13,5 @@
     "lib": ["dom", "es2015", "es2016", "esnext"],
     "jsx": "react-native"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "use-subscription"]
 }

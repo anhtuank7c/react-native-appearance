@@ -3,8 +3,9 @@
   "title": "React Native Appearance",
   "version": "1.0.0",
   "description": "TODO",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
