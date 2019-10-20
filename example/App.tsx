@@ -27,7 +27,6 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
 const App = (props) => {
-  console.log('App', props)
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
   return (
     <>
@@ -45,6 +44,9 @@ const App = (props) => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
+              <Text style={styles.sectionDescription}>
+                {`Theme: ${props.theme}`}
+              </Text>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>
@@ -113,10 +115,9 @@ const styles = StyleSheet.create({
 
 export default () => {
   const colorScheme = useColorScheme()
-  console.warn('colorScheme', colorScheme)
   return (
     <AppearanceProvider>
-      <App screenProps={colorScheme} />
+      <App theme={colorScheme} />
     </AppearanceProvider>
   )
 }

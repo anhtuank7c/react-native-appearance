@@ -43,5 +43,5 @@ export function useColorScheme(): ColorScheme {
         }), []
     )
   
-    return useSubscription<ColorScheme>(subscription)
+    return useSubscription(subscription)
 }
