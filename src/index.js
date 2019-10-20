@@ -1,11 +1,9 @@
 import React, { useMemo } from 'react'
-import { requireNativeComponent, NativeModules, NativeEventEmitter } from 'react-native'
-import { EventEmitter, EventSubscription } from 'fbemitter'
+import { requireNativeComponent, NativeModules, NativeEventEmitter, DeviceEventEmitter, EventSubscription } from 'react-native'
 import { useSubscription } from 'use-subscription'
 import { AppearancePreferences, ColorScheme, AppearanceListener } from './types'
 
 const RNCAppearance = NativeModules.RNCAppearance
-const eventEmitter = new EventEmitter()
 const EventListener = new NativeEventEmitter(RNCAppearance)
 const RNCAppearanceProvider = requireNativeComponent('RNCAppearanceProvider')
 
@@ -25,12 +23,12 @@ export class Appearance {
         let { colorScheme } = preferences
         if (appearancePreferences.colorScheme !== colorScheme) {
             appearancePreferences = { colorScheme }
-            eventEmitter.emit('change', preferences)
+            DeviceEventEmitter.emit('change', preferences)
         }
     }
 
     static addChangeListener(listener: AppearanceListener): EventSubscription {
-        return eventEmitter.addListener('change', listener)
+        return DeviceEventEmitter.addListener('change', listener)
     }
 }
 

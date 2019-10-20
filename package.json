@@ -41,7 +41,6 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "fbemitter": "^2.1.1",
     "use-subscription": "^1.1.1"
   },
   "nativePackage": true
