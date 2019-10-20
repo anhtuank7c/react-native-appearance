@@ -25,14 +25,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { AppearanceProvider, Appearance, useColorScheme } from 'react-native-appearance'
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
 const App = () => {
-  const colorScheme = Appearance.getColorScheme()
-  // useEffect(() => {
-  //   Appearance.addChangeListener(data => {
-  //     console.warn('addChangeListener', data)
-  //   })
-  // })
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
   return (
     <>
@@ -50,7 +44,6 @@ const App = () => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
-              <Text>colorScheme: {colorScheme}</Text>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>
@@ -117,8 +110,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => (
-  <AppearanceProvider>
-    <App />
-  </AppearanceProvider>
-)
+export default () => {
+  const colorScheme = useColorScheme()
+  console.warn('colorScheme', colorScheme)
+  return (
+    <AppearanceProvider>
+      <App />
+    </AppearanceProvider>
+  )
+}

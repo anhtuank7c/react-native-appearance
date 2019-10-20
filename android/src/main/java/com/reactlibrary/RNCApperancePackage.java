@@ -23,6 +23,6 @@ public class RNCApperancePackage implements ReactPackage {
     @NonNull
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-        return Arrays.asList(new RNCAppearanceManager());
+        return Arrays.<ViewManager>asList(new RNCAppearanceManager());
     }
 }

@@ -37,7 +37,7 @@ public class RNCApperanceModule extends ReactContextBaseJavaModule implements Li
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     Configuration newConfig = intent.getParcelableExtra("newConfig");
-                    sendEvent(reactContext, "appearanceChanged", getColorScheme(newConfig));
+                    sendEvent(ctx, "appearanceChanged", getColorScheme(newConfig));
                 }
             };
             ctx.addLifecycleEventListener(this);
