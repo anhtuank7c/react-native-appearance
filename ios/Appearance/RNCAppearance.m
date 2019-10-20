@@ -32,7 +32,7 @@ static NSString *RNCColorSchemePreference(UITraitCollection *traitCollection)
 
 @implementation RNCAppearance
 
-RCT_EXPORT_MODULE();
+RCT_EXPORT_MODULE(RNCAppearance);
 
 + (BOOL)requiresMainQueueSetup
 {

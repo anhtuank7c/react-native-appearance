@@ -24,11 +24,11 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RNCAppearanceModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
+public class RNCApperanceModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
     public static final String REACT_CLASS = "RNCAppearance";
     private BroadcastReceiver receiver = null;
 
-    public RNCAppearanceModule(@NonNull ReactApplicationContext reactContext) {
+    public RNCApperanceModule(@NonNull ReactApplicationContext reactContext) {
         super(reactContext);
         // only android 10+ support dark mode
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
@@ -37,7 +37,7 @@ public class RNCAppearanceModule extends ReactContextBaseJavaModule implements L
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     Configuration newConfig = intent.getParcelableExtra("newConfig");
-                    sendEvent(ctx, "appearanceChanged", getColorScheme(newConfig));
+                    sendEvent(reactContext, "appearanceChanged", getColorScheme(newConfig));
                 }
             };
             ctx.addLifecycleEventListener(this);
@@ -101,6 +101,22 @@ public class RNCAppearanceModule extends ReactContextBaseJavaModule implements L
 
     }
 
+    /**
+     * sendEvent
+     *
+     * @param eventName
+     * @param params
+     */
+    private void sendEvent(String eventName, @Nullable WritableMap params) {
+        if (getReactApplicationContext().hasActiveCatalystInstance()) {
+            FLog.i("sendEvent", eventName + ": " + params.toString());
+            getReactApplicationContext()
+                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                    .emit(eventName, params);
+        }
+
+    }
+
     @Override
     public void onHostResume() {
         final Activity activity = getCurrentActivity();
@@ -109,7 +125,7 @@ public class RNCAppearanceModule extends ReactContextBaseJavaModule implements L
             FLog.e(ReactConstants.TAG, "no activity to register receiver");
             return;
         }
-        activity.registerReceiver(receiver, new IntentFilter("onConfigurationChanged"));
+        activity.registerReceiver(receiver, new IntentFilter("onAppearanceConfigurationChanged"));
     }
 
     @Override

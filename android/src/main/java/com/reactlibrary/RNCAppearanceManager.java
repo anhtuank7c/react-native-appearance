@@ -2,8 +2,8 @@ package com.reactlibrary;
 
 import androidx.annotation.NonNull;
 
-import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.ViewGroupManager;
 
 public class RNCAppearanceManager extends ViewGroupManager<RNCAppearanceProvider> {
     public static final String CLASS_NAME = "RNCAppearanceProvider";
