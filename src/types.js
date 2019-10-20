@@ -1,4 +1,4 @@
-export type ColorScheme = 'light' | 'light' | 'no-preference'
+export type ColorScheme = 'light' | 'dark' | 'no-preference'
 export type AppearancePreferences = {
   colorScheme: ColorScheme
 }
