@@ -1,9 +1,14 @@
-export type ColorScheme = 'light' | 'light' | 'no-preference'
-export interface AppearancePreferences {
-  colorScheme: ColorScheme
+
+declare module "react-native-appearance" {
+  import * as React from "react";
+
+  export type ColorScheme = "light" | "dark" | "no-preference";
+
+  export interface AppearancePreferences {
+    colorScheme: ColorScheme
+  }
+
+  export class AppearanceProvider extends React.PureComponent<any, any> {}
+
+  export type useColorScheme = Function
 }
-export type AppearanceListener = (preferences: AppearancePreferences) => void
-export type Props = {
-  children: Any
-}
-export type AppearanceProvider = (props: Props) => void

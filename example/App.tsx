@@ -26,7 +26,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
-const App = () => {
+const App = (props) => {
+  console.log('App', props)
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;
   return (
     <>
@@ -115,7 +116,7 @@ export default () => {
   console.warn('colorScheme', colorScheme)
   return (
     <AppearanceProvider>
-      <App />
+      <App screenProps={colorScheme} />
     </AppearanceProvider>
   )
 }

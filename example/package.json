@@ -11,7 +11,8 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "react-native-appearance": "https://github.com/anhtuank7c/react-native-appearance.git"
+    "react-native-appearance": "https://github.com/anhtuank7c/react-native-appearance.git",
+    "use-subscription": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
