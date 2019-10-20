@@ -125,7 +125,7 @@ public class RNCApperanceModule extends ReactContextBaseJavaModule implements Li
             FLog.e(ReactConstants.TAG, "no activity to register receiver");
             return;
         }
-        activity.registerReceiver(receiver, new IntentFilter("onAppearanceConfigurationChanged"));
+        activity.registerReceiver(receiver, new IntentFilter("onConfigurationChanged"));
     }
 
     @Override
