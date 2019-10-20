@@ -25,7 +25,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
+import { AppearanceProvider, useColorScheme } from './Apperance'
 const App = (props) => {
   console.log('App', props)
   const usingHermes = typeof HermesInternal === 'object' && HermesInternal !== null;

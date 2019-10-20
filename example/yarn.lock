@@ -5031,7 +5031,7 @@ react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
 
 "react-native-appearance@https://github.com/anhtuank7c/react-native-appearance.git":
   version "1.0.0"
-  resolved "https://github.com/anhtuank7c/react-native-appearance.git#856007404f437e08563ac8a23d5f6ce5bc1bd795"
+  resolved "https://github.com/anhtuank7c/react-native-appearance.git#5c6d17595829cd93af362c0247d368748a7f9f42"
   dependencies:
     use-subscription "^1.1.1"
 
